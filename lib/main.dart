@@ -2,7 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shaders_gallery/music_shader/music_shader_view.dart';
+import 'package:shaders_gallery/shader_gallery.dart';
 
 late final ui.Image image;
 void main() async {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MusicShaderView(),
+      home: const ShadersGallery(),
     );
   }
 }

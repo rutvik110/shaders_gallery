@@ -30,9 +30,11 @@ class _MyShaderState extends State<SciFiNoise>
     helloWorld = ImageTransition.compile();
     delta = 0;
     ticker = Ticker((elapsedTime) {
-      setState(() {
-        delta += 1 / 60;
-      });
+      if (mounted) {
+        setState(() {
+          delta += 1 / 60;
+        });
+      }
     })
       ..start();
   }
@@ -40,6 +42,7 @@ class _MyShaderState extends State<SciFiNoise>
   @override
   void dispose() {
     // TODO: implement dispose
+    animationController.dispose();
     ticker.dispose();
     super.dispose();
   }

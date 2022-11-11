@@ -28,9 +28,11 @@ class _MyShaderState extends State<StripesShaderView> {
     helloWorld = Stripes.compile();
     delta = 0;
     ticker = Ticker((elapsedTime) {
-      setState(() {
-        delta += 1 / 60;
-      });
+      if (mounted) {
+        setState(() {
+          delta += 1 / 60;
+        });
+      }
     })
       ..start();
   }

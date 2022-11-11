@@ -27,6 +27,7 @@ class _MyShaderState extends State<PixelatedImageView>
 
   @override
   void dispose() {
+    animationController.dispose();
     super.dispose();
   }
 

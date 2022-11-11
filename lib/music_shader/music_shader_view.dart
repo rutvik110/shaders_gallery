@@ -42,23 +42,27 @@ class _MyShaderState extends State<MusicShaderView>
     samples = [];
     maxDuration = const Duration(milliseconds: 1000);
     elapsedDuration = const Duration();
-    parseData();
+    // parseData();
     audioPlayer.fixedPlayer!.onPlayerCompletion.listen((_) {
-      setState(() {
-        elapsedDuration = maxDuration;
-      });
+      if (mounted) {
+        setState(() {
+          elapsedDuration = maxDuration;
+        });
+      }
     });
     audioPlayer.fixedPlayer!.onAudioPositionChanged
         .listen((Duration timeElapsed) {
-      setState(() {
-        elapsedDuration = timeElapsed;
-        // find index of the current sample point
-        final elapsedTimeRatio =
-            elapsedDuration.inMilliseconds / maxDuration.inMilliseconds;
+      if (mounted) {
+        setState(() {
+          elapsedDuration = timeElapsed;
+          // find index of the current sample point
+          final elapsedTimeRatio =
+              elapsedDuration.inMilliseconds / maxDuration.inMilliseconds;
 
-        final activeIndex = (samples.length * elapsedTimeRatio).round();
-        volume = samples[activeIndex];
-      });
+          final activeIndex = (samples.length * elapsedTimeRatio).round();
+          volume = samples[activeIndex];
+        });
+      }
     });
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 3))
@@ -66,9 +70,11 @@ class _MyShaderState extends State<MusicShaderView>
     helloWorld = MusicShader.compile();
     delta = 0;
     ticker = Ticker((elapsedTime) {
-      setState(() {
-        delta += 1 / 60;
-      });
+      if (mounted) {
+        setState(() {
+          delta += 1 / 60;
+        });
+      }
     })
       ..start();
   }
@@ -112,7 +118,10 @@ class _MyShaderState extends State<MusicShaderView>
   @override
   void dispose() {
     // TODO: implement dispose
+
     ticker.dispose();
+    animationController.dispose();
+    audioPlayer.fixedPlayer!.dispose();
     super.dispose();
   }
 
@@ -172,6 +181,9 @@ class _MyShaderState extends State<MusicShaderView>
                 children: [
                   ElevatedButton(
                     onPressed: () {
+                      if (samples.isEmpty) {
+                        parseData();
+                      }
                       audioPlayer.play(audioData[1]);
                     },
                     child: const Text("Play"),

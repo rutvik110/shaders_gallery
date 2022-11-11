@@ -30,9 +30,11 @@ class _MyShaderState extends State<ImageTransitionView>
     helloWorld = ImageTransition.compile();
     delta = 0;
     ticker = Ticker((elapsedTime) {
-      setState(() {
-        delta += 1 / 60;
-      });
+      if (mounted) {
+        setState(() {
+          delta += 1 / 60;
+        });
+      }
     })
       ..start();
   }
@@ -41,6 +43,7 @@ class _MyShaderState extends State<ImageTransitionView>
   void dispose() {
     // TODO: implement dispose
     ticker.dispose();
+    animationController.dispose();
     super.dispose();
   }
 

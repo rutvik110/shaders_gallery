@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:shaders_gallery/main.dart';
-import 'package:shaders_gallery/pixelation/pixelation.dart';
+import 'package:shaders_gallery/noise_shader/noise_shader.dart';
+import 'package:umbra_flutter/umbra_flutter.dart';
 
 class NoiseShaderView extends StatefulWidget {
   const NoiseShaderView({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class NoiseShaderView extends StatefulWidget {
 
 class _MyShaderState extends State<NoiseShaderView>
     with SingleTickerProviderStateMixin {
-  late Future<Pixelation> helloWorld;
+  late Future<NoiseShader> helloWorld;
 
   late Ticker ticker;
 
@@ -24,16 +25,19 @@ class _MyShaderState extends State<NoiseShaderView>
     super.initState();
     delta = 0;
     ticker = Ticker((elapsedTime) {
-      setState(() {
-        delta += 1 / 60;
-      });
+      if (mounted) {
+        setState(() {
+          delta += 1 / 60;
+        });
+      }
     })
       ..start();
-    helloWorld = Pixelation.compile();
+    helloWorld = NoiseShader.compile();
   }
 
   @override
   void dispose() {
+    ticker.dispose();
     super.dispose();
   }
 
@@ -41,7 +45,7 @@ class _MyShaderState extends State<NoiseShaderView>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: FutureBuilder<Pixelation>(
+      body: FutureBuilder<NoiseShader>(
         future: helloWorld,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -55,7 +59,11 @@ class _MyShaderState extends State<NoiseShaderView>
                 return snapshot.data!.shader(
                   resolution: rect.size,
                   image: image,
-                  pixelSize: 10,
+                  frequency: Vector2(1, 1),
+
+                  amplifier: 10,
+                  scale: Vector2(1, 1),
+                  time: delta,
 
                   // uTime: delta,
                   // tiles: 8,
