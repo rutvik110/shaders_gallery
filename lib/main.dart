@@ -2,7 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shaders_gallery/stripes_shader/stripes_shader_view.dart';
+import 'package:shaders_gallery/music_shader/music_shader_view.dart';
 
 late final ui.Image image;
 void main() async {
@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const StripesShaderView(),
+      debugShowCheckedModeBanner: false,
+      home: const MusicShaderView(),
     );
   }
 }

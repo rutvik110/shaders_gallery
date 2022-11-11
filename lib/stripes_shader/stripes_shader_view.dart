@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:shaders_gallery/stripes_shader/stripes.dart';
 import 'package:shaders_gallery/util/colot_to_vector.dart';
+import 'package:umbra_flutter/umbra_flutter.dart';
 
 class StripesShaderView extends StatefulWidget {
   const StripesShaderView({Key? key}) : super(key: key);
@@ -49,7 +50,28 @@ class _MyShaderState extends State<StripesShaderView> {
         future: helloWorld,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Padding(
+            return ShaderMask(
+              child: const SizedBox.expand(
+                child: ColoredBox(
+                  color: Colors.white,
+                ),
+              ),
+              shaderCallback: (rect) {
+                return snapshot.data!.shader(
+                  resolution: rect.size,
+                  uTime: delta,
+                  tiles: 4.0,
+                  speed: -delta / 25,
+                  direction: (pi / 180) * 180, // -1 to 1
+                  warpScale: 0.5,
+                  warpTiling: -0.5,
+                  color1: Vector3(0, 225 / 256, 250 / 256),
+                  color2: Vector3(5 / 256, 37 / 256, 249 / 256),
+                );
+              },
+            );
+
+            Padding(
               padding: const EdgeInsets.all(20.0),
               child: ListView(
                 children: [
