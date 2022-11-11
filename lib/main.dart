@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:shaders_gallery/character_outline/character_outline.dart';
-import 'package:shaders_gallery/dune_sand/dune_sand_view.dart';
+import 'package:shaders_gallery/image_transition_view/image_transition_view.dart';
 import 'package:umbra_flutter/umbra_flutter.dart';
 
 late final ui.Image image;
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const DuneSandView(),
+      home: const ImageTransitionView(),
     );
   }
 }

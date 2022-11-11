@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:shaders_gallery/dune_sand/dune_sand.dart';
+import 'package:shaders_gallery/image_transition_view/image_transition.dart';
 import 'package:shaders_gallery/main.dart';
 import 'package:umbra_flutter/umbra_flutter.dart';
 
-class DuneSandView extends StatefulWidget {
-  const DuneSandView({Key? key}) : super(key: key);
+class ImageTransitionView extends StatefulWidget {
+  const ImageTransitionView({Key? key}) : super(key: key);
 
   @override
-  State<DuneSandView> createState() => _MyShaderState();
+  State<ImageTransitionView> createState() => _MyShaderState();
 }
 
-class _MyShaderState extends State<DuneSandView> {
-  late Future<DuneSand> helloWorld;
+class _MyShaderState extends State<ImageTransitionView>
+    with SingleTickerProviderStateMixin {
+  late Future<ImageTransition> helloWorld;
 
   late Ticker ticker;
 
   late double delta;
+  late final AnimationController animationController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    helloWorld = DuneSand.compile();
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3))
+          ..repeat(reverse: true);
+    helloWorld = ImageTransition.compile();
     delta = 0;
     ticker = Ticker((elapsedTime) {
       setState(() {
@@ -43,7 +48,7 @@ class _MyShaderState extends State<DuneSandView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: FutureBuilder<DuneSand>(
+      body: FutureBuilder<ImageTransition>(
         future: helloWorld,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -62,7 +67,7 @@ class _MyShaderState extends State<DuneSandView> {
                     rect.size.width,
                     rect.size.height,
                   ),
-                  iTime: delta,
+                  iTime: animationController.value,
                   // tiles: 8,
                   // speed: delta / 30,
                   // direction: 0.75, // -1 to 1

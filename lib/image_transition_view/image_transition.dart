@@ -5,21 +5,21 @@ import 'dart:ui';
 
 import 'package:umbra_flutter/umbra_flutter.dart';
 
-/// {@template dune_sand}
-/// A Dart Shader class for the `dune_sand` shader.
+/// {@template image_transition}
+/// A Dart Shader class for the `image_transition` shader.
 /// {@endtemplate}
-class DuneSand extends UmbraShader {
-  DuneSand._() : super(_cachedProgram!);
+class ImageTransition extends UmbraShader {
+  ImageTransition._() : super(_cachedProgram!);
 
-  /// {@macro dune_sand}
-  static Future<DuneSand> compile() async {
+  /// {@macro image_transition}
+  static Future<ImageTransition> compile() async {
     try {
       // Caching the program on the first compile call.
       _cachedProgram ??= await FragmentProgram.compile(
         spirv: Uint8List.fromList(base64Decode(_spirv)).buffer,
       );
 
-      return DuneSand._();
+      return ImageTransition._();
     } on Exception catch (err, stackTrace) {
       throw UmbraException(err, stackTrace);
     }

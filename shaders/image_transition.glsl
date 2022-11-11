@@ -1,4 +1,4 @@
-// Sand Desert - https://www.shadertoy.com/view/WdjXRR
+//Inspired from Sand Desert - https://www.shadertoy.com/view/WdjXRR
 // Generative dune landscape
 // Exploring procedural painting
 // Licensed under hippie love conspiracy
