@@ -89,8 +89,8 @@ class _MyShaderState extends State<MusicShaderView>
 
   List<List<String>> audioDataList = [
     [
-      'assets/images/sp.json',
-      'images/surface_pressure.mp3',
+      'assets/images/soy.json',
+      'images/shape_of_you.mp3',
     ],
   ];
 
