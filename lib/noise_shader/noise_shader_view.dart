@@ -59,10 +59,12 @@ class _MyShaderState extends State<NoiseShaderView>
                 return snapshot.data!.shader(
                   resolution: rect.size,
                   image: image,
-                  frequency: Vector2(1, 1),
-
+                  frequency: Vector2(5, 5),
                   amplifier: 10,
-                  scale: Vector2(1, 1),
+                  scale: Vector2(
+                    10,
+                    10,
+                  ),
                   time: delta,
 
                   // uTime: delta,
