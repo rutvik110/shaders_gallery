@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shaders_gallery/character_outline/character_outline_view.dart';
+import 'package:shaders_gallery/gmtk_elden_ring_card_shader/image_transition_view.dart';
 import 'package:shaders_gallery/image_transition_view/image_transition_view.dart';
 import 'package:shaders_gallery/music_shader/music_shader_view.dart';
 import 'package:shaders_gallery/noise_shader/noise_shader_view.dart';
@@ -18,6 +19,7 @@ class _ShadersGalleryState extends State<ShadersGallery> {
   final pageController = PageController();
   final pageItems = [
     const StripesShaderView(),
+    const GMTKELDENRIGNCARD(),
     const NoiseShaderView(),
     const PixelatedImageView(),
     const CharacterOutlineView(),
@@ -27,6 +29,7 @@ class _ShadersGalleryState extends State<ShadersGallery> {
   ];
   final shaderNames = [
     'Stripes Shader',
+    'GMTK ELDEN RIGN CARD',
     'Noise Shader',
     'Pixelation Shader',
     'Character Outline Shader',
