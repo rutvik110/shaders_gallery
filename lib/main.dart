@@ -7,7 +7,7 @@ import 'package:shaders_gallery/shader_gallery.dart';
 late final ui.Image image;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final dashImage = await rootBundle.load('assets/images/profile_pic.jpeg');
+  final dashImage = await rootBundle.load('assets/images/dash.png');
   final bytes = dashImage.buffer.asUint8List();
   image = await decodeImageFromList(bytes);
   runApp(const MyApp());
