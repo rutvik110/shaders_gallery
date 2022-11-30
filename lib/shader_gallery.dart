@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shaders_gallery/character_outline/character_outline_view.dart';
+import 'package:shaders_gallery/floyd_steinberg_dithering/floyd_steinberg_dithering_view.dart';
 import 'package:shaders_gallery/gmtk_elden_ring_card_shader/image_transition_view.dart';
 import 'package:shaders_gallery/image_transition_view/image_transition_view.dart';
 import 'package:shaders_gallery/music_shader/music_shader_view.dart';
@@ -18,7 +19,7 @@ class ShadersGallery extends StatefulWidget {
 class _ShadersGalleryState extends State<ShadersGallery> {
   final pageController = PageController();
   final pageItems = [
-    const StripesShaderView(),
+    const FloydSteinbergDitheringView(),
     const GMTKELDENRIGNCARD(),
     const NoiseShaderView(),
     const PixelatedImageView(),
@@ -26,9 +27,10 @@ class _ShadersGalleryState extends State<ShadersGallery> {
     const ImageTransitionView(),
     const SciFiNoise(),
     const MusicShaderView(),
+    const StripesShaderView(),
   ];
   final shaderNames = [
-    'Stripes Shader',
+    'Floyd-Steinberg-Dithering-View',
     'GMTK ELDEN RIGN CARD',
     'Noise Shader',
     'Pixelation Shader',
@@ -36,6 +38,7 @@ class _ShadersGalleryState extends State<ShadersGallery> {
     'Image Transition Shader',
     'Sci-Fi Noise Shader',
     'Music Shader',
+    'Stripes Shader',
   ];
   @override
   Widget build(BuildContext context) {
