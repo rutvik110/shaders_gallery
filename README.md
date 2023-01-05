@@ -1,16 +1,14 @@
-# shaders_gallery
+# Shaders Gallery
 
-A new Flutter project.
+🏠 Home for all the crazy stuff that I've been doing with shaders✨ while learning them📚, building these gallery to share all those experiments🎇
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h2> Sponsored with 💙 by </h2>
+<div align="center">
+ <div style="background-color:lightblue">
+    
+<a  href="https://code.pieces.app/"><img width="400" alt="White-PFD-TM" src="https://user-images.githubusercontent.com/65209850/210824481-49e4b319-3a68-4cbd-98ec-43d07e35760f.png">
+</a>
+  </div>
+</div>
+<h2></h2>
